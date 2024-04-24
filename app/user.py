@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 import enum
 from . import db
 from flask_login import UserMixin
