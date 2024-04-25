@@ -40,21 +40,29 @@ def register():
         last_name = request.form.get('last_name')
         user_name = request.form.get('user_name')
         email = request.form.get('email')
-        password = request.form.get('password')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
         role = request.form.get('role')
 
         # Need to check if all fields are filled
-        if not all([first_name, last_name, user_name, email, password, role]):
+        if not all([first_name, last_name, user_name,
+                    email, password1, password2, role]):
             flash('All fields are required')
             return redirect(request.url)
         
+        
         # check if the password length is greater than 8 characters
-        if len(password) < 8:
+        if len(password1) < 8:
             flash('Password must be at least 8 characters long')
             return redirect(request.url)
         
+        # check if password1 is the same as password2
+        if password1 != password2:
+            flash('Passwords do not match')
+            return redirect(request.url)
+        
         # Hash the password
-        hashed_passwd = generate_password_hash(password)
+        hashed_passwd = generate_password_hash(password1)
         
         pat = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
 
