@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-import enum
 from . import db
 from flask_login import UserMixin
+from datetime import datetime
 
 
-class UserRole(enum.Enum):
-    """Defines the user roles"""
-    USER = 'user'
-    ARTIST = 'artist'
+# class UserRole(Enum):
+#     """Defines the user roles"""
+#     USER = 'user'
+#     ARTIST = 'artist'
 
 class User(db.Model, UserMixin):
     """
@@ -19,6 +19,6 @@ class User(db.Model, UserMixin):
     user_name = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    role = db.Column(db.Enum(UserRole), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    role = db.Column(db.Enum("user", "artist"), nullable=False, default="user")
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow(), onupdate=datetime.utcnow())
