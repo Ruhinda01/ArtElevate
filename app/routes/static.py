@@ -8,10 +8,10 @@ from flask_login import current_user, login_required
 static = Blueprint('static', __name__)
 
 
-@static.route('/')
-def landing():
-    """Landing route"""
-    return render_template('landing.html')
+# @static.route('/')
+# def landing():
+#     """Landing route"""
+#     return render_template('landing.html')
 
 
 @static.route('/home')
