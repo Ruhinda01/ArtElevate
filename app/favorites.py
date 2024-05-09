@@ -8,7 +8,7 @@ class Favorites(db.Model):
     This favorites class describes the favorites
     database table
     """
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     artwork_id = db.Column(db.Integer, db.ForeignKey('artwork.id'))
     user = db.relationship('User', backref='favorites', lazy=True)

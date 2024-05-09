@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ artwork.image_url }}" alt="{{ artwork.title }}" class="img-fluid">
+        </div>
+        <div class="col-md-6 ms-auto">
+            <h2 class="fw-bold">{{ artwork.title }}</h2>
+            <p class="fw-normal fs-5"><strong>Medium:</strong> {{ artwork.medium }}</p>
+            <p class="fw-normal fs-5"><strong>Dimensions:</strong> {{ artwork.width }} x {{ artwork.height }} x {{ artwork.depth }} {{ artwork.unit }}</p>
+            <p class="fw-bold fs-5 fst-italic"><strong>Price:</strong> ${{ artwork.price }}</p>
+            <p class="fw-normal fs-5"><strong>Description:</strong> {{ artwork.description }}</p>
+            <a href="{{ url_for('artist_profile.view_profile', artist_id=artwork.artist_id) }}" class="btn btn-primary">View Artist Profile</a>
+        </div>
+    </div>
+{% endblock %}

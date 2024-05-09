@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% if artworks %}
+            {% for artwork in artworks %}
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 position-relative">
+                <a href="{{ url_for('artwork.artwork_details', artwork_id=artwork.artwork.id) }}">
+                    <img src="{{ artwork.artwork.image_url }}" alt="{{ artwork.artwork.title }}" class="w-100 shadow-1-strong rounded mb-4">
+                </a>
+                <div class="row">
+                    <p class="fw-bold mb-0 fs-5">{{ artwork.artwork.title }}</p>
+                    <p class="fw-normal mb-0">{{ artwork.artwork.medium }}</p>
+                    <p class="fw-normal mb-0">
+                        {{ artwork.artwork.width }} x {{ artwork.artwork.height }} x {{ artwork.artwork.depth }} {{ artwork.artwork.unit }}
+                    </p>
+                    <p class="fw-bold ms-auto">$ {{ artwork.artwork.price }}</p>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3">
+                        <form action="{{ url_for('favorites.remove_favorite', artwork_id=artwork.artwork.id) }}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No favorites found</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
