@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center fw-semibold">Upload Artwork</h2>
+    <form method="post" action="{{ url_for('artwork.upload_artwork') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="title" class="form-label">Title:</label>
+            {{ form.title(class_="form-control") }}
+            <!-- <input type="text" class="form-control" id="title" name="title" required> -->
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="description" class="form-label">Description:</label>
+            {{ form.description(class_="form-control") }}
+            <!-- <textarea class="form-control" id="description" name="description" required></textarea> -->
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="medium" class="form-label">Medium:</label>
+            {{ form.medium(class_="form-control") }}
+            <!-- <input type="text" class="form-control" id="medium" name="medium" required> -->
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="price" class="form-label">Price:</label>
+            {{ form.price(class_="form-control") }}
+            <!-- <input type="number" class="form-control" id="price" name="price" required> -->
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                <label for="width" class="form-label">Width:</label>
+                {{ form.width(class_="form-control") }}
+                <!-- <input type="number" class="form-control" id="width" name="width" required> -->
+            </div>
+            <br>
+            <div class="col">
+                <label for="height" class="form-label">Height:</label>
+                {{ form.height(class_="form-control") }}
+                <!-- <input type="number" class="form-control" id="height" name="height" required> -->
+            </div>
+            <br>
+            <div class="col">
+                <label for="depth" class="form-label">Depth:</label>
+                {{ form.depth(class_="form-control") }}
+                <!-- <input type="number" class="form-control" id="depth" name="depth" required> -->
+            </div>
+            <br>
+            <div class="col">
+                <label for="unit" class="form-label">Unit:</label>
+                {{ form.unit(class_="form-control") }}
+                <!-- <input type="text" class="form-control" id="unit" name="unit" required> -->
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="file" class="form-label">File:</label>
+            {{ form.photo(class_="form-control") }}
+            <!-- <input type="file" class="form-control" id="file" name="file" required> -->
+        </div>
+        <br>
+        {{ form.submit(class_="btn btn-primary") }}
+        <!-- <button type="submit" class="btn btn-primary">Upload</button> -->
+    </form>
+    {% if file_url %}
+    <div class="mt-5">
+        <img src="{{ url_for('serve_file', filename=filename) }}" alt="Uploaded Image" class="img-fluid">
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

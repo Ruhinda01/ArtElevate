@@ -5,6 +5,7 @@ from flask import Blueprint, request, flash, redirect, url_for, render_template
 from app.user import User
 from app.artist import Artist
 from app import db
+from datetime import datetime
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -22,13 +23,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!', 'success')
+                flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('static.home'))
             else:
-                flash('Incorrect password, try again.', 'error')
+                flash('Incorrect password, try again.', category='error')
         else:
-            flash('User does not exist', 'error')
+            flash('User does not exist', category='error')
     return render_template('login.html', user=current_user)
     # return '<h1>login</h1>'
 
@@ -44,21 +45,23 @@ def register():
         password2 = request.form.get('password2')
         role = request.form.get('role')
 
+        print("Role from the form: ", role)
+
         # Need to check if all fields are filled
         if not all([first_name, last_name, user_name,
                     email, password1, password2, role]):
-            flash('All fields are required')
+            flash('All fields are required', category='error')
             return redirect(request.url)
         
         
         # check if the password length is greater than 8 characters
         if len(password1) < 8:
-            flash('Password must be at least 8 characters long')
+            flash('Password must be at least 8 characters long', category='error')
             return redirect(request.url)
         
         # check if password1 is the same as password2
         if password1 != password2:
-            flash('Passwords do not match')
+            flash('Passwords do not match', category='error')
             return redirect(request.url)
         
         # Hash the password
@@ -68,20 +71,26 @@ def register():
 
         # check the email address format
         if not (re.fullmatch(pat, email)):
-            flash('Invalid email address')
+            flash('Invalid email address', category='error')
             return redirect(request.url)
         
         # Check if the email already exists
         if User.query.filter_by(email=email).first():
-            flash('Email already exists')
+            flash('Email already exists', category='error')
             return redirect(request.url)
         
         # check if the username already exists
         if User.query.filter_by(user_name=user_name).first():
-            flash('Username already exists')
+            flash('Username already exists', category='error')
             return redirect(request.url)
         
-
+        # try:
+        #     user_role = UserRole[role]
+        #     print("user_role: ", user_role)
+        # except KeyError:
+        #     flash('Invalid role selected')
+        #     return redirect(request.url)
+        
         if role == 'artist':
             bio = request.form.get('bio')
             portfolio_link = request.form.get('portfolio_link')
@@ -92,19 +101,28 @@ def register():
                 flash('All fields are required')
                 return redirect(request.url)
             
+            # created_at datetime and updated_at
+            created_at = datetime.utcnow()
+            updated_at = created_at
             # Create the user
             user = User(first_name=first_name, last_name=last_name,
                         user_name=user_name, email=email,
-                        password=hashed_passwd, role=role)
+                        password=hashed_passwd, role='artist',
+                        created_at=created_at, updated_at=updated_at)
             # Create the artist
             artist = Artist(bio=bio, portfolio_link=portfolio_link,
                             preferred_medium=preferred_medium, user=user)
             db.session.add(user)
             db.session.add(artist)
         else:
+            # created_at datetime and updated_at
+            created_at = datetime.utcnow()
+            updated_at = created_at
+            # Create the user
             user = User(first_name=first_name, last_name=last_name,
                         user_name=user_name, email=email,
-                        password=hashed_passwd, role=role)
+                        password=hashed_passwd, role='user',
+                        created_at=created_at, updated_at=updated_at)
             db.session.add(user)
         
         # Commit all the changes
@@ -112,7 +130,7 @@ def register():
         # login the user
         login_user(user, remember=True)
         # Redirect user or artist to the home page
-        flash('Account created!', 'success')
+        flash('Account created!', category='success')
         return redirect(url_for('static.home'))
     
     return render_template('register.html', user=current_user)
@@ -124,4 +142,3 @@ def logout():
     """Logs out the user"""
     logout_user()
     return redirect(url_for('auth.login'))
-    # return '<h1>logout</h1>'

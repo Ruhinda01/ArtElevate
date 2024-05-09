@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center fw-semibold">Join The Tribe</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="user_name">User Name:</label>
+            <input type="text" class="form-control" id="user_name" name="user_name" placeholder="User Name">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password1">Password:</label>
+            <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password2">Confirm Password:</label>
+            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="role">Role:</label>
+            <select class="form-control" id="role" name="role" required>
+                <option value='user'>User</option>
+                <option value='artist'>Artist</option>
+            </select>
+        </div>
+        <br>
+        <div id="artist-fields" style="display: none;">
+            <div class="form-group">
+                <label for="bio">Bio:</label>
+                <textarea class="form-control" id="bio" name="bio"></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="portfolio_link">Portfolio Link:</label>
+                <input type="text" class="form-control" id="portfolio_link" name="portfolio_link">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="preferred_medium">Preferred Medium:</label>
+                <input type="text" class="form-control" id="preferred_medium" name="preferred_medium">
+            </div>
+            <br>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    // Hide the artist fields initially AND
+    // show the artist fields when the artist role is selected
+    document.getElementById('role').addEventListener('change', function() {
+        let artistFields = document.getElementById('artist-fields');
+        if (this.value === 'artist') {
+            artistFields.style.display = 'block';
+        } else {
+            artistFields.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

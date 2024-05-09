@@ -9,6 +9,7 @@ class ShoppingCart(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     quantity = db.Column(db.Integer)
+    total_price = db.Column(db.Float)
     artwork_id = db.Column(db.Integer, db.ForeignKey('artwork.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     artwork = db.relationship('Artwork', backref='shopping_carts')
