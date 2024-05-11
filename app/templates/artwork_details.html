@@ -11,7 +11,25 @@
             <p class="fw-normal fs-5"><strong>Dimensions:</strong> {{ artwork.width }} x {{ artwork.height }} x {{ artwork.depth }} {{ artwork.unit }}</p>
             <p class="fw-bold fs-5 fst-italic"><strong>Price:</strong> ${{ artwork.price }}</p>
             <p class="fw-normal fs-5"><strong>Description:</strong> {{ artwork.description }}</p>
-            <a href="{{ url_for('artist_profile.view_profile', artist_id=artwork.artist_id) }}" class="btn btn-primary">View Artist Profile</a>
+            <div class="row">
+                <div class="col-auto">
+                    <a href="{{ url_for('artist_profile.view_profile', artist_id=artwork.artist_id) }}" class="btn btn-primary">View Artist Profile</a>
+                </div>
+                <div class="col-auto">
+                    <form action="{{ url_for('favorites.add_favorite', artwork_id=artwork.id) }}" method="post">
+                        <button class="btn btn-outline-danger" type="submit">
+                            <i class="bi bi-heart-fill"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-auto">
+                    <form action="{{ url_for('shopping_cart.add_shopping_cart', artwork_id=artwork.id) }}" method="post">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi bi-bag-plus-fill"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
