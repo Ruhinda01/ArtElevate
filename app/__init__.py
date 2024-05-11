@@ -10,14 +10,14 @@ from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 
 db = SQLAlchemy()
-DB_NAME = "artelevate.db"
+# DB_NAME = "artelevate.db"
 photos = UploadSet('photos', IMAGES)
 
 def create_app():
     """Creates the application with flask adding CORS and database"""
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'This is the newest art gallery'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + DB_NAME
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOADED_PHOTOS_DEST'] = 'app/uploads'
 
@@ -87,6 +87,5 @@ def create_app():
 def create_database(app):
     """Creates the database if it does not exist"""
     # ensures i do not overwrite my existing data essential guarding me from data loss
-    if not os.path.exists(os.path.join('app', DB_NAME)):
-        with app.app_context():
-            db.create_all()
+    with app.app_context():
+        db.create_all()
