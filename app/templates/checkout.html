@@ -88,7 +88,14 @@
                 </div>
                 <div class="d-flex justify-content-end">
                     <p class="fw-semibold h3">Total price: ${{ total_price }}</p>
-                    <form action="{{ url_for('shopping_cart.checkout') }}" method="post">
+                    <form action="https://checkout.flutterwave.com/v3/hosted/pay" method="post">
+                        <input type="hidden" name="public_key" value="FLWPUBK_TEST-0bd982ef62cde6b54b2d5b0519e020d5-X" />
+                        <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                        <input type="hidden" name="customer[name]" value="{{ user.first_name }} {{ user.last_name }}" />
+                        <input type="hidden" name="tx_ref" value="bitethtx-019203"/>
+                        <input type="hidden" name="amount" value="{{ total_price }}" />
+                        <input type="hidden" name="currency" value="USD" />
+                        <input type="hidden" name="meta[source]" value="docs-html-test" />
                         <button type="submit" class="btn btn-success ms-2">Proceed to Payment</button>
                     </form>
                 </div> 
