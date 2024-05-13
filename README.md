@@ -11,6 +11,9 @@ Art is the an expression of the human spirit and the many paths man has taken to
 
 Other features for artists is to delete or edit artwork uploaded onto the platform, removing artwork from the favorites page, adding and removing from cart and updating quantity of an item in the cart.
 
+Use this link to visit my application: [ArtElevate](https://artelevate.onrender.com/)
+
+
 ### The Context
 
 This project is our Portfolio Project concluding the Foundations at ALX SE Program. We were able to choose what to build and produce a working MVP (Minimum Viable Product) by the end of the two and half week deadline.
@@ -19,7 +22,13 @@ This project is our Portfolio Project concluding the Foundations at ALX SE Progr
 
 I worked on this project by myself. I am passionate about design and technology. I love to learn new things and this was actually one of the biggest challenges i have undertaken.
 
-* Ruhinda Roderick Izooba - Graduate Architect and Aspiring Software Engineer.
+* Ruhinda Roderick Izooba - Graduate Architect and Aspiring Software Engineer. [LinkedIn](https://www.linkedin.com/in/ruhinda-roderick-izooba/)
+
+### Blog Posts
+
+After the development phase, I wrote a blog post to reflect on the ArtElevate journey.
+
+* Ruhinda's article: 
 
 ## Tech Stack
 
@@ -78,7 +87,46 @@ Checkout
 
 ![Checkout_2](/README/Screenshot%202024-05-09%20162007.png)
 
-### Author
+#### Installation
+
+Fork this repository to your github account to allow you access to the repository.
+From this you'll get access to the files within the repo and run a `git clone` on your local machine to gain access directly to files on your local machine.
+Install python on your local machine through your terminal. You could either download python using this link <https://www.python.org/downloads/> or on your terminal using the following:
+
+On Linux/Ubuntu:
+
+* `sudo apt update` - This updates your package lists
+* `sudo apt install python3`
+* `python3 --version` - This is to verify the installation
+
+On MacOS using HomeBrew
+
+* `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` - Installation of Homebrew
+* `brew install python`
+* `python3 --version` - This is to verify the installation
+
+On Windows via Powershell
+
+* Follow the link above and download and install python on your machine.
+* `python3 --version` - This is to verify the installation
+
+#### Usage
+
+* Navigate to the directory `ArtElevate`.
+* Create a virtual environment on you terminal by using this `python3 -m venv env`.
+* Access you can access your virtual environment by using this `source env/bin.activate` and leave your virtual environment by using this `deactivate`.
+* Run this to install all necessary packages that exist in the **requirements.txt** file by using this `pip install -r requirements.txt`.
+* Create an environment variable named `DATABASE_URI` using this command `export DATABASE_URI=(your_database_URL/URI)`
+* You can then run the application using this `python3 -m main` on the development server or `gunicorn main:app` on the production server.
+
+#### Contributing
+
+This is an open source project welcoming all to contribute to this web application.
+
+#### Author
 
 * Ruhinda Roderick Izooba <rickyruhinda@gmail.com>
 
+#### Licence
+
+MIT Licence
