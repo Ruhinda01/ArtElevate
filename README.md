@@ -3,6 +3,7 @@
 ![ArtElevate Logo](app/static/images/artelevate_logo.png)
 
 ## Introduction
+
 ### The Project
 
 Art is the an expression of the human spirit and the many paths man has taken to become what we are today. It is a time capsule for a past, present and future. Without art, how would we ever justify our time here on this big ball called "Earth". Well, I present to you **ArtElevate**.
@@ -28,19 +29,19 @@ I worked on this project by myself. I am passionate about design and technology.
 
 After the development phase, I wrote a blog post to reflect on the ArtElevate journey.
 
-* Ruhinda's article: 
+* Ruhinda's article:
 
 ## Tech Stack
 
 ![Tech_stack](/README/Tech%20stack.png)
 
 ## Architecture
-#### Overview
+
+### Overview
 
 This web application is coded mainly in python and flask as a web framework. It is a full stack application with back-end to increase functionality and front-end to build the UI and UX of the application. I designed the User Interface using HTML, and Bootstrap 5.
 
 ![Architecture](/README/artelevate.jpg)
-
 
 ### Flask
 
@@ -129,4 +130,4 @@ This is an open source project welcoming all to contribute to this web applicati
 
 #### Licence
 
-MIT Licence
+MIT Licence.
