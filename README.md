@@ -14,7 +14,6 @@ Other features for artists is to delete or edit artwork uploaded onto the platfo
 
 Use this link to visit my application: [ArtElevate](https://artelevate.onrender.com/)
 
-
 ### The Context
 
 This project is our Portfolio Project concluding the Foundations at ALX SE Program. We were able to choose what to build and produce a working MVP (Minimum Viable Product) by the end of the two and half week deadline.
@@ -128,6 +127,6 @@ This is an open source project welcoming all to contribute to this web applicati
 
 * Ruhinda Roderick Izooba <rickyruhinda@gmail.com>
 
-#### Licence
+## Licence
 
 MIT Licence.
