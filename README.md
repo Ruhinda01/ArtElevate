@@ -88,7 +88,7 @@ Checkout
 
 ![Checkout_2](/README/Screenshot%202024-05-09%20162007.png)
 
-#### Installation
+## Installation
 
 Fork this repository to your github account to allow you access to the repository.
 From this you'll get access to the files within the repo and run a `git clone` on your local machine to gain access directly to files on your local machine.
@@ -111,7 +111,7 @@ On Windows via Powershell
 * Follow the link above and download and install python on your machine.
 * `python3 --version` - This is to verify the installation
 
-#### Usage
+## Usage
 
 * Navigate to the directory `ArtElevate`.
 * Create a virtual environment on you terminal by using this `python3 -m venv env`.
@@ -120,7 +120,7 @@ On Windows via Powershell
 * Create an environment variable named `DATABASE_URI` using this command `export DATABASE_URI=(your_database_URL/URI)`
 * You can then run the application using this `python3 -m main` on the development server or `gunicorn main:app` on the production server.
 
-#### Contributing
+## Contributing
 
 This is an open source project welcoming all to contribute to this web application.
 
