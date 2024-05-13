@@ -115,7 +115,7 @@ On Windows via Powershell
 
 * Navigate to the directory `ArtElevate`.
 * Create a virtual environment on you terminal by using this `python3 -m venv env`.
-* Access you can access your virtual environment by using this `source env/bin.activate` and leave your virtual environment by using this `deactivate`.
+* Access you can access your virtual environment by using this `source env/bin/activate` and leave your virtual environment by using this `deactivate`.
 * Run this to install all necessary packages that exist in the **requirements.txt** file by using this `pip install -r requirements.txt`.
 * Create an environment variable named `DATABASE_URI` using this command `export DATABASE_URI=(your_database_URL/URI)`
 * You can then run the application using this `python3 -m main` on the development server or `gunicorn main:app` on the production server.
