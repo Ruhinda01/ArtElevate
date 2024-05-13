@@ -124,7 +124,7 @@ On Windows via Powershell
 
 This is an open source project welcoming all to contribute to this web application.
 
-#### Author
+## Author
 
 * Ruhinda Roderick Izooba <rickyruhinda@gmail.com>
 
