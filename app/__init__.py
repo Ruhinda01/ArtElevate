@@ -10,14 +10,14 @@ from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 
 db = SQLAlchemy()
-# DB_NAME = "artelevate.db"
+DB_NAME = "artelevate.db"
 photos = UploadSet('photos', IMAGES)
 
 def create_app():
     """Creates the application with flask adding CORS and database"""
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'This is the newest art gallery'
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'This is the newest art gallery'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI') or 'sqlite:///artelevate.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOADED_PHOTOS_DEST'] = 'app/uploads'
 
