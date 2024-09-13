@@ -17,7 +17,7 @@ def create_app():
     """Creates the application with flask adding CORS and database"""
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI') or 'sqlite:///artelevate.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///artelevate.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOADED_PHOTOS_DEST'] = 'app/uploads'
 
